@@ -17,9 +17,11 @@
             "text_element": {
                 "html": `[% FILTER collapse %]
                     <ul>
-                    [% FOREACH action_pair IN pair.value -%]
-                        <li id="data-error-[% action_pair.key %]">[% action_pair.value.$description_key %]</li>
-                    [%- END %]
+                    [% FOREACH action_pair IN pair.value %]
+                        [% IF action_pair.value.$description_key.defined %]
+                            <li id="data-error-[% action_pair.key %]">[% action_pair.value.$description_key %]</li>
+                        [% END %]
+                    [% END %]
                     </ul>
                 [% END %]`
             },
